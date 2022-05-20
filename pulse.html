@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./build/pyscript.css">
+    <script defer src="./build/pyscript.js"></script>
+    <py-env>
+        - matplotlib
+        - networkx
+        - scipy
+        - paths:
+            - ./utils.py
+            - ./graph290420221818.json
+    </py-env>
+    <title>Lightning Pulse</title>
+</head>
+<body>
+    <div id="mpl"></div>
+    <py-script output="mpl">
+from utils import draw_nx, options
+import networkx as nx
+import matplotlib.pyplot as plt
+
+graph = draw_nx('graph290420221818')
+print(graph)
+fig = plt.figure(figsize=(16, 9))
+pos = nx.spring_layout(graph, k=0.4, iterations=10, seed=721)
+nx.draw(graph, pos, **options)
+plt.draw()
+# Get graph
+
+# Analyse Changes
+
+# Render it
+fig
+    </py-script>
+</body>
+</html>
